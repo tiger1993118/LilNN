@@ -1,0 +1,37 @@
+
+Previous Topic: 2.12 Lecture 12 - Reinforcement Learning Alt+,  Next Topic: 3.2 Assignment 2 Alt+.  
+3.1 Assignment 1
+Due date: Thursday, May 3rd at midnight. 
+
+
+Consider the Pokemon data set, which can be found in the CSV file found here.  This data set consists of 41 columns and 801 rows.  These data represent 801 Pokemon characters which have been introduced over the years.
+
+The purpose of this assignment is to build a neural network which will predict which "generation" the character belongs to.  To make this prediction, use as input the values from the columns whose names begin with "against_" ("against_bug", "against_dark", "against_dragon", etc.).
+
+Create a Python script, called "pokemon_nn.py", which performs the following steps:
+
+reads in the Pokemon data set (the 'pandas' package may be helpful here).  You may assume that the above CSV file is colocated with the script; the file name may be hard-coded.
+separates the input and output data from the data set (you may hard-code the columns for this assignment),
+splits the input and output data into training and testing data sets,
+builds a neural network, using Keras, to predict the generation of the Pokemon characters,
+trains the network on the training data,
+evaluates the network on the test data, and prints out the result.
+Vary the parameters in your model (number of hidden layers, number of nodes per layer, activation functions, presence/absence of regularization or dropout or batch normalization, cost function, optimization algorithm) to get the best model you can find.  The best model I have found consistently returns a test result of about 27% accuracy.  See if you can do better.
+
+Your script will be tested from the Linux command line, thus:
+
+$ python pokemon_nn.py
+
+Using Theano backend.
+
+Reading Pokemon file.
+
+Building network.
+
+Training network.
+
+The test score is [2.1056855798508067, 0.29192546583850931]
+
+$
+
+The script will be graded on functionality, but also on form.  This means your script should use meaningful variable names and be well commented.
