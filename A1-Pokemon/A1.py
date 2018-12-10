@@ -6,6 +6,7 @@ NN with Pokemon file
 @author: Tiger
 """
 
+from timeit import default_timer as timer
 import pandas as pd
 import numpy as np
 import keras.models as km
@@ -57,7 +58,7 @@ lrs = []
 decays = []
 numnode = []
 
-lr = 0.008
+lr = 0.0104
 decay = 1e-6
 nodes2 = 30
 for i in range(150):
@@ -66,11 +67,12 @@ for i in range(150):
 #        lr = 0.01
 #        if(i % 5 == 0):
 #            decay += 2e-7   
-    lr = 0.0104
-    decay = 1e-6
+    
     if(i % 5 == 0):
         nodes2 -= 1
-
+        
+    # Set up Timer
+    start = timer()
     """Read data, then reshape and divide into test and train"""
     # Read data
     data = pd.read_csv('pokemon.csv').values;
@@ -129,8 +131,10 @@ for i in range(150):
     numnode.append(nodes2)
     train.append(train_score)
     test.append(score)
-    
-    print("i", i, "lr", lr, "decay", decay, "nodes2", nodes2, "train", train_score, "test", score)
+    end = timer()
+    print("i", i, "time", round(end - start, 5), "lr", round(lr, 5) \
+          , "decay", round(decay, 5), "nodes2", nodes2 \
+          , "train", round(train_score, 4), "test", round(score, 4))
     
     
 '''       
