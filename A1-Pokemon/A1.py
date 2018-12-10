@@ -132,9 +132,9 @@ for i in range(150):
     train.append(train_score)
     test.append(score)
     end = timer()
-    print("i", i, "time", round(end - start, 5), "lr", round(lr, 5) \
-          , "decay", round(decay, 5), "nodes2", nodes2 \
-          , "train", round(train_score, 4), "test", round(score, 4))
+    print("i", i, "time", round(end - start, 0), "lr", round(lr, 9) \
+          , "decay", decay, "nodes2", nodes2 \
+          , "train", round(train_score, 3), "test", round(score, 2))
     
     
 '''       
