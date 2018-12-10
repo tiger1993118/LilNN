@@ -60,21 +60,17 @@ numnode = []
 lr = 0.008
 decay = 1e-6
 nodes2 = 30
-for i in range(650) :
+for i in range(150):
     
-    if(i <= 250):
-        if(i % 5 == 0):
-            lr += 0.0001
-    elif(i <= 500):
-        lr = 0.01
-        if(i % 5 == 0):
-            decay += 2e-7
-    else:
-        lr = 0.01
-        decay = 1e-6
-        if(i % 5 == 0):
-            nodes2 -= 1  
-            
+#    elif(i <= 500):
+#        lr = 0.01
+#        if(i % 5 == 0):
+#            decay += 2e-7   
+    lr = 0.0104
+    decay = 1e-6
+    if(i % 5 == 0):
+        nodes2 -= 1
+
     """Read data, then reshape and divide into test and train"""
     # Read data
     data = pd.read_csv('pokemon.csv').values;
@@ -135,6 +131,21 @@ for i in range(650) :
     test.append(score)
     
     print("i", i, "lr", lr, "decay", decay, "nodes2", nodes2, "train", train_score, "test", score)
+    
+    
+'''       
+After Testing
+
+From i = 0 to 250 
+which lr = 0.0081 to 0.013
+lrs[102:127] having the best range of correctness
+[0.35, 0.34, 0.32, 0.29, 0.32, 0.29, 0.32, 0.29, 0.32, 0.35, 0.33,
+ 0.36, 0.29, 0.34, 0.3 , 0.26, 0.3 , 0.3 , 0.35, 0.35, 0.29, 0.27,
+ 0.31, 0.28, 0.29]
+for which lr = 0.0102 to 0.0106
+
+
+'''
 
 
 
