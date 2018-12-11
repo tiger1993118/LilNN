@@ -52,6 +52,18 @@ def get_model(numnodes, input_size = 784, output_size = 10, numnodes2=0):
     # Return the model.
     return model
 
+# Read data
+data = pd.read_csv('pokemon.csv').values;
+x = data[:, 1:19].astype('float32')
+y = data[:, 39].astype('uint8')-1# -1 because to_categorical starting at 0
+x = x * 4 #integer
+
+# Size and dimensions
+size = y.shape[0] #801
+input_dim = x.shape[1]
+output_dim = 7
+    
+# Storing parameters
 train = []
 test = []
 lrs = []
@@ -60,8 +72,9 @@ numnode = []
 
 lr = 0.0104
 decay = 1e-6
-nodes2 = 30
-for i in range(150):
+nodes2 = 27
+
+for i in range(200):
     
 #    elif(i <= 500):
 #        lr = 0.01
@@ -74,16 +87,6 @@ for i in range(150):
     # Set up Timer
     start = timer()
     """Read data, then reshape and divide into test and train"""
-    # Read data
-    data = pd.read_csv('pokemon.csv').values;
-    x = data[:, 1:19].astype('float32')
-    y = data[:, 39].astype('uint8')-1# -1 because to_categorical starting at 0
-    x = x * 4 #integer
-    
-    # Size and dimensions
-    size = y.shape[0] #801
-    input_dim = x.shape[1]
-    output_dim = 7
     
     # Non-repeated randomly select 40 indices as test set
     test_choice = np.random.choice(size, 100, replace = False)
@@ -132,6 +135,7 @@ for i in range(150):
     train.append(train_score)
     test.append(score)
     end = timer()
+    
     print("i", i, "time", round(end - start, 0), "lr", round(lr, 9) \
           , "decay", decay, "nodes2", nodes2 \
           , "train", round(train_score, 3), "test", round(score, 2))
@@ -147,8 +151,14 @@ lrs[102:127] having the best range of correctness
  0.36, 0.29, 0.34, 0.3 , 0.26, 0.3 , 0.3 , 0.35, 0.35, 0.29, 0.27,
  0.31, 0.28, 0.29]
 for which lr = 0.0102 to 0.0106
+I will choose lr = 0.0104
 
-
+From i = 0 to 200
+which numnode = 40 to 1
+numnodes[63:79] have the best range of correctnes
+[0.33, 0.31, 0.3 , 0.37, 0.3 , 0.31, 0.3 , 0.27, 0.34, 0.28, 0.29,
+0.28, 0.34, 0.35, 0.35, 0.3 ]
+I will choose numnodes = 27
 '''
 
 
