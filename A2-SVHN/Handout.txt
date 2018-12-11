@@ -1,0 +1,37 @@
+3.2 Assignment 2
+Due date: Tuesday, May 15th at midnight. 
+
+
+Consider the SVHN (Street View House Number) data set.  You can read about the data set here.  The data we will be using can be found here (training) and here (testing).  We are going to be looking at a subset of the original data set, consisting of 32 x 32 pixel colour images of house numbers taken from Google Street View.
+
+Note that the data files linked above are in a MATLAB format.  Use the "loadmat" function, which is available from the "scipy.io" subpackage, to read this data into Python.  You may also find the "numpy.rollaxis" function to be helpful in pre-processing the data.
+
+The purpose of this assignment is to build a neural network which will correctly determine the digit (1 - 10) represented by the images in the data set.
+
+Create a Python script, called "svhn_nn.py", which performs the following steps:
+
+reads in the training and testing data sets,
+builds a neural network, using Keras, to predict the digit in the images,
+trains the network on the training data,
+evaluates the network on the test data, and prints out the result.
+Vary the parameters in your model (number of hidden layers, number of nodes per layer, activation functions, presence/absence of regularization or dropout or batch normalization, cost function, optimization algorithm) to get the best model you can find.  The best model I have found (so far) returns a test result of about 85% accuracy.  See if you can do the same.  Note that some pre-processing of the data will be required.  
+
+Also note that, due to the size of the network and the size of the data, using a GPU makes development of your network much faster.  If you do not have access to a GPU, do the best you can with the resources you have.
+
+Your script will be tested from the Linux command line, thus:
+
+$ python svhn_nn.py
+
+Using Theano backend.
+
+Reading data files.
+
+Building network.
+
+Training network.
+
+The test score is [0.52297169762333262, 0.84588199139520592]
+
+$
+
+The script will be graded on functionality, but also on form.  This means your script should use meaningful variable names and be well commented.
