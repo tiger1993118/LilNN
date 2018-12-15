@@ -58,28 +58,37 @@ def get_model2D(numfm, numnodes, input_shape = (32, 32, 3),
     # Initialize the model.
     model = km.Sequential()
     
-    # Input is 28x28
+    # Input is (32, 32, 3)
     # Add a 2D convolution layer, with numfm feature maps.
-    model.add(kl.Conv2D(numfm, kernel_size = (5, 5),
+    model.add(kl.Conv2D(numfm, 
+                        kernel_size = (5, 5),
                         input_shape = input_shape,
                         activation = 'relu'))
     
-    # Input is 24x24
+    # Input is (28, 28, 3)
     # Add a max pooling layer.
     model.add(kl.MaxPooling2D(pool_size = (2, 2),
                               strides = (2, 2)))
     
-    # Input is 12x12
+    # Input is (14, 14, 3)
     # Add a 2D convolution layer, with 2xnumfm feature maps.
-    model.add(kl.Conv2D(numfm * 2, kernel_size = (3, 3),
+    model.add(kl.Conv2D(numfm * 2, 
+                        kernel_size = (3, 3),
+                        activation = 'sigmoid'))
+
+    # Input is (12, 12, 3)
+    # Add a max pooling layer.
+    model.add(kl.AveragePooling2D(pool_size = (2, 2),
+                              strides = (2, 2)))
+    
+    # Input is (6, 6, 3)
+    # Add a 2D convolution layer, with 2xnumfm feature maps.
+    model.add(kl.Conv2D(numfm * 3, 
+                        kernel_size = (3, 3),
                         activation = 'relu'))
 
-    # Input is 10x10
-    # Add a max pooling layer.
-    model.add(kl.MaxPooling2D(pool_size = (2, 2),
-                              strides = (2, 2)))
+    # Input is (4, 4, 3)
     
-    # Input is 5x5
     # Convert the network from 2D to 1D.
     model.add(kl.Flatten())
     
