@@ -9,9 +9,9 @@ Process:
 import scipy.io as sio
 import numpy as np
 import keras.utils as ku
-from model8 import get_model
+from A2 import get_model
 from timeit import default_timer as timer
-from matplotlib.pyplot import imshow
+#from matplotlib.pyplot import imshow
 
 
 #################### Read Data and Processing ################################
@@ -27,10 +27,10 @@ raw_test_x = test_mat['X']# (32, 32, 3, 26032)
 train_x = np.rollaxis(raw_train_x, 3)
 test_x = np.rollaxis(raw_test_x, 3)
 # Reshaping the X to add 1 dimension at the end 
-#train_x = np.expand_dims(train_x, axis = 4)
-#test_x = np.expand_dims(test_x, axis = 4)
-train_x = train_x[:, :, :, 0:1]
-test_x = test_x[:, :, :, 0:1]
+train_x = np.expand_dims(train_x, axis = 4)
+test_x = np.expand_dims(test_x, axis = 4)
+#train_x = train_x[:, :, :, 0:1]
+#test_x = test_x[:, :, :, 0:1]
 
 # Y values -- Testing data, 'raw_data' stands for data with original shape
 train_y = train_mat['y']# (73257, 1)
@@ -58,7 +58,7 @@ model.compile(loss = "categorical_crossentropy",
 start = timer()
 
 # Training Process
-fit = model.fit(train_x, train_y, epochs=50, batch_size=100, verbose=2)
+fit = model.fit(train_x, train_y, epochs=50, batch_size=5000, verbose=2)
 
 # End Time
 end = timer()
