@@ -1,4 +1,4 @@
 # Exclude all the data
 
 *.mat
-
+__pycache__/*
