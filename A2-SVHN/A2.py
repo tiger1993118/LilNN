@@ -6,7 +6,7 @@ import keras.models as km
 import keras.layers as kl
 
 
-def get_model(num_fm, num_nodes, input_shape=(32, 32, 3, 1), output_size=10):
+def get_model3D(num_fm, num_nodes, input_shape=(32, 32, 3, 1), output_size=10):
     
     # Initialize the model
     model = km.Sequential()
@@ -52,29 +52,8 @@ def get_model(num_fm, num_nodes, input_shape=(32, 32, 3, 1), output_size=10):
 
 
 
-def get_model2(numfm, numnodes, input_shape = (32, 32, 1),
+def get_model2D(numfm, numnodes, input_shape = (32, 32, 3),
               output_size = 10):
-
-    """
-    This function returns a convolution neural network Keras model,
-    with numfm feature maps in the first convolutional layer, 2 *
-    numfm in the second convolutional layer, and numnodes neurons in
-    the fully-connected layer.
-
-    Inputs:
-    - numfm: int, the number of feature maps in the convolution layer.
-
-    - numnodes: int, the number of nodes in the fully-connected layer.
-
-    - intput_shape: tuple, the shape of the input data, 
-    default = (28, 28, 1).
-
-    - output_size: int, the number of nodes in the output layer,
-      default = 10.
-
-    Output: the constructed Keras model.
-
-    """
 
     # Initialize the model.
     model = km.Sequential()
