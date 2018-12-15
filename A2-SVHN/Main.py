@@ -44,7 +44,7 @@ test_y = ku.to_categorical(test_y, 10)# (73257, 10)
 
 ######################### Set up the NN model ################################
 
-model = A2.get_model2D(20, 100)
+model = A2.get_model2D(60, 100)
 
 # Compile the NN model 
 model.compile(loss = "categorical_crossentropy", 
@@ -58,7 +58,7 @@ model.compile(loss = "categorical_crossentropy",
 start = timer()
 
 # Training Process
-fit = model.fit(train_x, train_y, epochs=60, batch_size=2000, verbose=2)
+fit = model.fit(train_x, train_y, epochs=50, batch_size=500, verbose=2)
 
 # End Time
 end = timer()

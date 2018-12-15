@@ -61,29 +61,29 @@ def get_model2D(numfm, numnodes, input_shape = (32, 32, 3),
     # Input is (32, 32, 3)
     # Add a 2D convolution layer, with numfm feature maps.
     model.add(kl.Conv2D(numfm, 
-                        kernel_size = (5, 5),
+                        kernel_size = (6, 6),
                         input_shape = input_shape,
                         activation = 'relu'))
     
-    # Input is (28, 28, 3)
+    # Input is (28, 28, numfm)
     # Add a max pooling layer.
-    model.add(kl.MaxPooling2D(pool_size = (2, 2),
-                              strides = (2, 2)))
+    model.add(kl.MaxPooling2D(pool_size = (3, 3),
+                              strides = (3, 3)))
     
-    # Input is (14, 14, 3)
+    # Input is (14, 14, numfm)
     # Add a 2D convolution layer, with 2xnumfm feature maps.
     model.add(kl.Conv2D(numfm * 2, 
-                        kernel_size = (3, 3),
+                        kernel_size = (4, 4),
                         activation = 'sigmoid'))
 
-    # Input is (12, 12, 3)
+    # Input is (12, 12, numfm)
     # Add a max pooling layer.
     model.add(kl.AveragePooling2D(pool_size = (2, 2),
                               strides = (2, 2)))
     
     # Input is (6, 6, 3)
     # Add a 2D convolution layer, with 2xnumfm feature maps.
-    model.add(kl.Conv2D(numfm * 3, 
+    model.add(kl.Conv2D(numfm * 4, 
                         kernel_size = (3, 3),
                         activation = 'relu'))
 
