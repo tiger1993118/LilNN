@@ -1,18 +1,14 @@
-
 """
 Process: 
-
 1. Applying CNN to the data and check the runtime and result
-
+2. Change CPU-powered to GPU-powered
 """
-
-import scipy.io as sio
-import numpy as np
-import keras.utils as ku
 import A2 
+import numpy as np
+import scipy.io as sio
+import keras.utils as ku
 from timeit import default_timer as timer
 #from matplotlib.pyplot import imshow
-
 
 #################### Read Data and Processing ################################
 
@@ -51,7 +47,6 @@ model.compile(loss = "categorical_crossentropy",
               optimizer = "adam", 
               metrics = ['accuracy'])
 
-
 ######################### Training ##########################################
 
 # Start Timer
@@ -66,7 +61,6 @@ end = timer()
 # Test Accuracy
 score = model.evaluate(test_x, test_y)
 
-
+# Print total runtime
 print("Time is: ", round((end - start), 2), " seconds")
-
 
